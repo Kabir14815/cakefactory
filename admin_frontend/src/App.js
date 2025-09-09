@@ -1,10 +1,10 @@
 import React from 'react'
-import { BrowserRouter, Route, Navigate,Routes } from "react-router-dom";
-import { useSelector ,} from 'react-redux';
+import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {UserLogin,Logout, Question, CustomerEdit,AppLayout,AdminDashboard, Orders,OrderDetails,Customers,
-  Designtool,CustomOrderDetails ,Sales,Notifications,Feedbacks,Staff,NewStaff, Products,ProductEdit
-  ,NewProduct ,Profile } from "./adminExportFiles";
+  Designtool,CustomOrderDetails,Sales,Notifications,Feedbacks,Staff,NewStaff, Products,ProductEdit
+  ,NewProduct,Profile } from "./adminExportFiles";
 
 
 const theme = createTheme({
@@ -19,17 +19,17 @@ const theme = createTheme({
 function App() {
   const {access_token} = useSelector(state => state.auth);
 
-          const correctEmail = process.env.ADMIN_EMAIL;
-          const correctPassword = process.env.ADMIN_PASSWORD;
+  const correctEmail = process.env.ADMIN_EMAIL;
+  const correctPassword = process.env.ADMIN_PASSWORD;
 
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="logout" element={<Logout /> } />
-          <Route  path="login" element={ <UserLogin /> } />
+          <Route path="logout" element={<Logout />} />
+          <Route path="login" element={<UserLogin />} />
           {/* admin routes */}
-          <Route path="admin" element={access_token ? < AppLayout/>  : <Navigate to="/login" />} >
+          <Route path="admin" element={access_token ? < AppLayout/> : <Navigate to="/login" />} >
             <Route index path="dashboard" element={ <AdminDashboard />}/>
             <Route path="customers" element={<Customers />} />
             <Route path="customer/edit/:id" element={<CustomerEdit />} />
@@ -49,9 +49,9 @@ function App() {
             <Route path="staff/edit/:id" element={<CustomerEdit />} />
             <Route path="newstaff" element={<NewStaff/>} />
           </Route>
-
+        </Routes>
       </BrowserRouter>
-      </ThemeProvider>
+    </ThemeProvider>
   );
 }
     
