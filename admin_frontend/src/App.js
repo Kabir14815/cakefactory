@@ -18,6 +18,10 @@ const theme = createTheme({
 
 function App() {
   const {access_token} = useSelector(state => state.auth);
+
+          const correctEmail = process.env.ADMIN_EMAIL;
+          const correctPassword = process.env.ADMIN_PASSWORD;
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
@@ -45,8 +49,7 @@ function App() {
             <Route path="staff/edit/:id" element={<CustomerEdit />} />
             <Route path="newstaff" element={<NewStaff/>} />
           </Route>
-          <Route path="*" element={<h1> Please type /admin in URL email: "Admin@gmail.com" Password "admin123" </h1>} />
-        </Routes>
+
       </BrowserRouter>
       </ThemeProvider>
   );
